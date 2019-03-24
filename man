@@ -1,0 +1,94 @@
+#!/usr/bin/bash
+
+function display
+{
+  # echo displaying MAN from file $2
+
+  # First ungzip man file
+  if [ "$3" == "gzip" ] ; then
+    gzip -d -c $2 > $TMP/man$1.tmp
+    file=$TMP/man$1.tmp
+  else
+    file=$2
+  fi
+
+  # Check if redirection
+  IFS=" "
+  read first second < $file
+  if [ "$first" == ".so" ] ; then
+    r=$p/$second
+  else
+    r=
+  fi
+
+  if [ "$r" == "" ] ; then
+    # No redirection then display it
+    if [ "$SHELL" == "/bin/sh" ] ; then
+      #groff -Tascii -man $file | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" - 2>/dev/null | less
+      groff -Tascii -man $file | sed -r "s/\x1B\[2[24]m/\x1B\[0m/g" - 2>/dev/null | less
+    else
+      groff -Tascii -man $file
+    fi
+  else
+    # redirection then recursive call
+    if [ -e $r.gz ] ; then
+      display 1 $r.gz gzip
+    else
+      display 1 $r
+    fi
+  fi
+  if [ "$3" == "gzip" ] ; then
+    rm $TMP/man$1.tmp
+  fi
+
+  exit
+}
+
+
+if [ -z "$2" ] ; then
+  section=\*
+  sectionlist="1 1p 8 2 3 3p 4 5 6 7 9 0p n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
+  page=$1
+else
+  section=$1
+  sectionlist=$1
+  page=$2
+fi
+
+# echo section=$section
+# echo sectionlist=$sectionlist
+# echo page=$page
+
+if [ -z "$MANPATH" ] ; then
+  pathlist=/usr/share/man:/share/man
+else
+  pathlist=$MANPATH
+fi
+
+# echo pathlist=$pathlist
+
+IFS=\; ; set -o noglob
+for p in $pathlist ; do
+  #pushd "$p" 1>/dev/null
+  # echo Searching directory $p
+  IFS=" "
+  for s in $sectionlist ; do
+    # echo trying directory $p/man$s
+    if [ -e "$p/man$s/$page.$s.gz" ] ; then
+      display 0 "$p/man$s/$page.$s.gz" gzip
+    elif [ -e "$p/man$s/$page.$s" ] ; then
+      display 0 "$p/man$s/$page.$s"
+    fi
+  done
+  #popd 1>/dev/null
+done
+
+if [ "$section" == "*" ] ; then
+  echo No manual entry for $page
+else
+  echo No manual entry for $page in section $section
+fi
+
+
+
+

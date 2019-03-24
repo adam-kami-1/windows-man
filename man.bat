@@ -27,17 +27,13 @@ for /f "delims=; tokens=1,*" %%p in ("!pathlist!") do (
   for %%s in (!sectionlist!) do (
     REM echo Trying subdir man%%s
     for %%f in (man%%s\!page!.%%s*.gz) do (
-      call :setcolor %%p
       call :display 0 %%f gzip
       popd
-      call :setcolor
       goto :eof
     )
     for %%f in (man%%s\!page!.%%s*) do (
-      call :setcolor %%p
       call :display 0 %%f
       popd
-      call :setcolor
       goto :eof
     )
   )
@@ -57,7 +53,7 @@ goto :eof
 REM ====== :display ======
 :display
 
-echo Displaying file %CD%\%2
+REM echo Displaying file %CD%\%2
 REM First ungzip man file
 if "%3" == "gzip" (
   gzip -d -c %2 > %TMP%\man%1.tmp
@@ -75,11 +71,28 @@ for /f "tokens=1,*" %%t in (!file!) do (
 )
 REM If no redirection then display it
 if "!r!" == "" (
-  if "%SHELL%" == "" (
-    groff -Tascii -man !file! | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" - 2>NUL | less
+  if "%TERM%" == "emacs" (
+    set TERM=dumb
+  )
+  if "!TERM!" == "dumb" (
+    REM echo Dumb terminal
+    REM echo SHELL=[%SHELL%]
+    REM echo TERM=[%TERM%]
+    groff -T ascii -man !file!
+    Echo File displayed
+    REM  sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" - 2>NUL
   ) else (
-    REM My emacs sets this variable to: G:/emacs-24.5/libexec/emacs/24.5/i686-pc-mingw32/cmdproxy.exe
-    groff -Tascii -man !file!
+    REM echo Other terminal
+    REM echo SHELL=[%SHELL%]
+    REM echo TERM=[%TERM%]
+    call :Version
+    if "!VERSION_MAJOR!" == "10" (
+      REM Windows 10
+      groff -Tascii -man !file! | sed -r "s/\x1B\[2[24]m/\x1B\[0m/g" - 2>NUL | less
+    ) else (
+      REM Below Windows 10
+      groff -Tascii -man !file! | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" - 2>NUL | less
+    )
   )
 ) else (
   REM If redirection then recursive call
@@ -95,15 +108,15 @@ if "%3" == "gzip" (
 goto :eof
 
 
-REM ====== :setcolor ======
-:setcolor
-
-if "%1" == "" (
-  color 07
-  goto :eof
+REM ============================================================================
+:Version
+REM ===========
+setlocal
+REM %1 - Result variable name
+set RESULT=%1
+if [%RESULT%] == [] set RESULT=VERSION
+REM ===========
+for /f "tokens=1,2,3,4,5 delims=. " %%A in ('ver') do (
+  set MAJOR=%%D& set MINOR=%%E
 )
-if exist "%~d1\System Volume Information" (
-  color 07
-) else (
-  color 1E
-)
+endlocal & set %RESULT%=%MAJOR%.%MINOR%& set %RESULT%_MAJOR=%MAJOR%& set %RESULT%_MINOR=%MINOR%& exit /b
