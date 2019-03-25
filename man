@@ -2,33 +2,35 @@
 
 function display
 {
-  # echo displaying MAN from file $2
+    # echo displaying MAN from file $2
 
-  # First ungzip man file
-  if [ "$3" == "gzip" ] ; then
-    gzip -d -c $2 > $TMP/man$1.tmp
-    file=$TMP/man$1.tmp
-  else
-    file=$2
-  fi
+    # First ungzip man file
+    if [ "$3" == "gzip" ] ; then
+        gzip -d -c $2 > $TMP/man$1.tmp
+        file=$TMP/man$1.tmp
+    else
+        file=$2
+    fi
 
-  # Check if redirection
-  IFS=" "
-  read first second < $file
-  if [ "$first" == ".so" ] ; then
-    r=$p/$second
-  else
-    r=
-  fi
+    # Check if redirection
+    IFS=" "
+    read first second < "$file"
+    if [ "$first" == ".so" ] ; then
+        r=$second
+    else
+        r=
+    fi
 
   if [ "$r" == "" ] ; then
-    # No redirection then display it
-    if [ "$SHELL" == "/bin/sh" ] ; then
-      #groff -Tascii -man $file | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" - 2>/dev/null | less
-      groff -Tascii -man $file | sed -r "s/\x1B\[2[24]m/\x1B\[0m/g" - 2>/dev/null | less
-    else
-      groff -Tascii -man $file
-    fi
+      # No redirection then display it
+      if [ "$SHELL" == "/bin/sh" ] ; then
+          # SYS bash
+          groff -Tascii -man "$file" | sed -r "s/\x1B\[2[24]m/\x1B\[0m/g" 2>/dev/null | less
+      else
+          # Git bash
+          groff -Tascii -man "$file"
+          #| sed -r "s/\x1B\[2[24]m/\x1B\[0m/g"
+      fi
   else
     # redirection then recursive call
     if [ -e $r.gz ] ; then
@@ -67,20 +69,20 @@ fi
 
 # echo pathlist=$pathlist
 
-IFS=\; ; set -o noglob
+IFS=: ; set -o noglob
 for p in $pathlist ; do
-  #pushd "$p" 1>/dev/null
+  pushd "$p" >/dev/null
   # echo Searching directory $p
   IFS=" "
   for s in $sectionlist ; do
-    # echo trying directory $p/man$s
-    if [ -e "$p/man$s/$page.$s.gz" ] ; then
-      display 0 "$p/man$s/$page.$s.gz" gzip
-    elif [ -e "$p/man$s/$page.$s" ] ; then
-      display 0 "$p/man$s/$page.$s"
+    # echo trying directory man$s
+    if [ -e "man$s/$page.$s.gz" ] ; then
+      display 0 "man$s/$page.$s.gz" gzip
+    elif [ -e "man$s/$page.$s" ] ; then
+      display 0 "man$s/$page.$s"
     fi
   done
-  #popd 1>/dev/null
+  popd >/dev/null
 done
 
 if [ "$section" == "*" ] ; then
