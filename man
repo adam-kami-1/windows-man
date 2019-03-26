@@ -2,7 +2,7 @@
 
 function display
 {
-    # echo displaying MAN from file $2
+    if [ $debug == true ] ; then echo displaying MAN from file $p/$2 ; fi
 
     # First ungzip man file
     if [ "$3" == "gzip" ] ; then
@@ -46,7 +46,15 @@ function display
   exit
 }
 
-
+debug=false
+if [ "$1" == "-d" ] ; then
+    debug=true
+    shift 1
+fi
+if [ "$1" == "--debug" ] ; then
+    debug=true
+    shift 1
+fi
 if [ -z "$2" ] ; then
   section=\*
   sectionlist="1 1p 8 2 3 3p 4 5 6 7 9 0p n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
@@ -57,9 +65,9 @@ else
   page=$2
 fi
 
-# echo section=$section
-# echo sectionlist=$sectionlist
-# echo page=$page
+if [ $debug == true ] ; then echo section=$section ; fi
+if [ $debug == true ] ; then echo sectionlist=$sectionlist ; fi
+if [ $debug == true ] ; then echo page=$page ; fi
 
 if [ -z "$MANPATH" ] ; then
   pathlist=/usr/share/man:/share/man
@@ -67,19 +75,21 @@ else
   pathlist=$MANPATH
 fi
 
-# echo pathlist=$pathlist
+if [ $debug == true ] ; then echo pathlist=$pathlist ; fi
 
 IFS=: ; set -o noglob
 for p in $pathlist ; do
   pushd "$p" >/dev/null
-  # echo Searching directory $p
+  if [ $debug == true ] ; then echo Searching directory $p ; fi
   IFS=" "
   for s in $sectionlist ; do
-    # echo trying directory man$s
-    if [ -e "man$s/$page.$s.gz" ] ; then
-      display 0 "man$s/$page.$s.gz" gzip
-    elif [ -e "man$s/$page.$s" ] ; then
-      display 0 "man$s/$page.$s"
+    if [ -d "man$s" ] ; then
+      if [ $debug == true ] ; then echo trying directory man$s ; fi
+      if [ -e "man$s/$page.$s.gz" ] ; then
+        display 0 "man$s/$page.$s.gz" gzip
+      elif [ -e "man$s/$page.$s" ] ; then
+        display 0 "man$s/$page.$s"
+      fi
     fi
   done
   popd >/dev/null
