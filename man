@@ -69,15 +69,49 @@ if [ $debug == true ] ; then echo section=$section ; fi
 if [ $debug == true ] ; then echo sectionlist=$sectionlist ; fi
 if [ $debug == true ] ; then echo page=$page ; fi
 
+IFS=:  ; set -o noglob
 if [ -z "$MANPATH" ] ; then
-  pathlist=/usr/share/man:/share/man
+  pathlist=
+  for p in $PATH ; do
+    IFS=
+    if [ $debug == true ] ; then echo Checking ${p} ; fi
+
+    # Under MinGW bash ...\MinGW\msys\1.0\bin maps to /usr/bin
+    if [ ${p} == /usr/bin ] ; then
+      if [ -d ${p/\/bin/\/share\/man} ] ; then
+        pathlist=${pathlist}:${p/\/bin/\/share\/man}
+      fi
+    fi
+
+    #Under MinGW bash ...\MinGW\bin maps to /mingw/bin
+    if [ ${p} == /mingw/bin ] ; then
+      if [ -d ${p/\/bin/\/share\/man} ] ; then
+        pathlist=${pathlist}:${p/\/bin/\/share\/man}
+      fi
+    fi
+
+    # MinGW under Git bash
+    if [ ${p/\/MinGW\//} != ${p} ] ; then
+      pathlist=${pathlist}:${p/\/bin/\/share\/man}
+    fi
+
+    # Works under MinGW and Git bash
+    if [ ${p/\/GnuWin32\//} != ${p} ] ; then
+      pathlist=${pathlist}:${p/\/bin/\/man}
+    fi
+
+    # Works under MinGW and Git bash
+    if [ ${p/\/emacs-/} != ${p} ] ; then
+      pathlist=${pathlist}:${p/\/bin/\/share\/man}
+    fi
+    IFS=:
+  done
 else
   pathlist=$MANPATH
 fi
+if [ $debug == true ] ; then echo pathlist=${pathlist} ; fi
 
-if [ $debug == true ] ; then echo pathlist=$pathlist ; fi
-
-IFS=: ; set -o noglob
+IFS=:
 for p in $pathlist ; do
   pushd "$p" >/dev/null
   if [ $debug == true ] ; then echo Searching directory $p ; fi
@@ -87,8 +121,23 @@ for p in $pathlist ; do
       if [ $debug == true ] ; then echo trying directory man$s ; fi
       if [ -e "man$s/$page.$s.gz" ] ; then
         display 0 "man$s/$page.$s.gz" gzip
+        popd >/dev/null
+        exit 0
       elif [ -e "man$s/$page.$s" ] ; then
         display 0 "man$s/$page.$s"
+        popd >/dev/null
+        exit 0
+      fi
+      if [ "$sectionlist" != "$section" ] ; then
+        if [ -e "man$s/$page.gz" ] ; then
+          display 0 "man$s/$page.gz" gzip
+          popd >/dev/null
+          exit 0
+        elif [ -e "man$s/$page" ] ; then
+          display 0 "man$s/$page"
+          popd >/dev/null
+          exit 0
+        fi
       fi
     fi
   done

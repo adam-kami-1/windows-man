@@ -15,15 +15,28 @@ if "%2" == "" (
 )
 
 if "%MANPATH%" == "" (
-  for /f "tokens=1,2,*" %%a in ('reg query HKLM\SOFTWARE\Wow6432Node\GnuWin32 /v InstallPath') do (
-    set pathlist=%%c\man
+
+  set "plist=%PATH%"
+  :loop
+  for /f "delims=; tokens=1,*" %%p in ("!plist!") do (
+
+    if %debug% == true echo Checking %%p
+    call :Check %%p
+    if not "!RES!" == "" set pathlist=!pathlist!;!RES!
+    REM echo pathlist=!pathlist!
+    set plist=%%q
   )
-) else (
+  if not "!plist!" == "" goto :loop
+
+  set pathlist=%pathlist:~1%
+)
+if not "%MANPATH%" == "" (
   set pathlist=%MANPATH%
+
 )
 if %debug% == true echo pathlist=!pathlist!
 
-:loop
+:man_dir_loop
 for /f "delims=; tokens=1,*" %%p in ("!pathlist!") do (
 
   pushd %%p
@@ -31,15 +44,27 @@ for /f "delims=; tokens=1,*" %%p in ("!pathlist!") do (
   for %%s in (!sectionlist!) do (
     if exist man%%s (
       if %debug% == true echo Trying subdir man%%s
-      for %%f in (man%%s\!page!.%%s*.gz) do (
-        call :display 0 %%f gzip
+      if exist man%%s\!page!.%%s.gz (
+        call :display 0 man%%s\!page!.%%s.gz gzip
         popd
         goto :eof
       )
-      for %%f in (man%%s\!page!.%%s*) do (
-        call :display 0 %%f
+      if exist man%%s\!page!.%%s (
+        call :display 0 man%%s\!page!.%%s
         popd
         goto :eof
+      )
+      if not "!sectionlist!" == "!section!" (
+        if exist man%%s\!page!.gz (
+          call :display 0 man%%s\!page!.gz gzip
+          popd
+          goto :eof
+        )
+        if exist man%%s\!page! (
+          call :display 0 man%%s\!page!
+          popd
+          goto :eof
+        )
       )
     )
   )
@@ -47,7 +72,7 @@ for /f "delims=; tokens=1,*" %%p in ("!pathlist!") do (
 
   set pathlist=%%q
 )
-if not "!pathlist!" == "" goto :loop
+if not "!pathlist!" == "" goto :man_dir_loop
 
 if !section! == * (
   echo No manual entry for %1
@@ -56,6 +81,29 @@ if !section! == * (
 )
 goto :eof
 
+REM ============================================================================
+REM ====== :Check ======
+:Check
+setlocal
+set VAR=%1
+
+set RES=%VAR:\MinGW\=%
+if not "%RES%" == "%VAR%" set RES=%VAR:\bin=\share\man%
+if not "%RES%" == "%VAR%" endlocal &set RES=%RES%& exit /b
+
+set RES=%VAR:\GnuWin32\=%
+if not "%RES%" == "%VAR%" set RES=%VAR:\bin=\man%
+if not "%RES%" == "%VAR%" endlocal &set RES=%RES%& exit /b
+
+set RES=%VAR:\emacs-=%
+if not "%RES%" == "%VAR%" set RES=%VAR:\bin=\share\man%
+if not "%RES%" == "%VAR%" endlocal &set RES=%RES%& exit /b
+
+endlocal &set RES=
+goto :eof
+
+
+REM ============================================================================
 REM ====== :display ======
 :display
 
