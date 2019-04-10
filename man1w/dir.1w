@@ -1,0 +1,234 @@
+.\" Man page for "dir"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH DIR 1w "2019-04-08" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+dir \- Displays a list of files and subdirectories in a directory
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.\" dir [<Drive>:][<Path>][<FileName>] [...]
+.\" [/p] [/q] [/w] [/d]
+.\" [/a[[:]<Attributes>]]
+.\" [/o[[:]<SortOrder>]]
+.\" [/t[[:]<TimeField>]]
+.\" [/s] [/b] [/l] [/n] [/x] [/c] [/4]
+.
+.SY dir
+.OP /?
+.YS
+.
+.
+.SY dir
+.RI [ Drive>: ][ Path ][ FileName ]
+.RI [ ... ]
+.
+.OP /p
+.OP /q
+.OP /w
+.OP /d
+.
+.RB [ /a [[  : ]
+.IR attributes ]]
+.
+.RB [ /o [[  : ]
+.IR sortorder ]]
+.
+.RB [ /t [[  : ]
+.IR time_field ]]
+.
+.OP /s
+.OP /b
+.OP /l
+.OP /n
+.OP /x
+.OP /c
+.OP /4
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+Displays the name of or changes the current drive and/or directory.
+.
+.
+If used with only a drive letter (for example, cd C:),
+.B cd
+displays the names of the current directory in the specified drive. If
+used without parameters,
+.B cd
+displays the current drive and directory.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.RI [ Drive>: ][ Path ][ FileName ]
+.
+Specifies the drive and directory for which you want to see a listing.
+.
+.TP
+.B /?
+Display help and exit. Other options are ignored.
+.
+.TP
+.B /p
+Displays one screen of the listing at a time. To see the next screen, press any key on the keyboard.
+.
+.TP
+.B /q
+Displays file ownership information.
+.
+.TP
+.B /w
+Displays the listing in wide format, with as many as five file names or directory names on each line.
+.
+.TP
+.B /d
+Displays the listing in the same format as /w, but the files are sorted by column.
+.
+.TP
+.RB [ /a [[  : ] attributes ]]
+.
+Displays only the names of those directories and files with the
+attributes that you specify. If you omit /a, dir displays the names of
+all files except hidden and system files. If you use /a without
+specifying Attributes, dir displays the names of all files, including
+hidden and system files.
+.
+.TP
+.RB [ /o [[  : ] sortorder ]]
+.
+Sorts the output according to
+.I SortOrder
+. \.
+.
+.TP
+.RB [ /t [[  : ] time_field ]]
+.
+Specifies which time field to display or use for sorting.
+.
+.TP
+.B /s
+Lists every occurrence of the specified file name within the specified
+directory and all subdirectories.
+.
+.TP
+.B /b
+Displays a bare list of directories and files, with no additional
+information.
+.B /b
+overrides
+.B /w
+. \.
+.
+.TP
+.B /l
+Displays unsorted directory names and file names in lowercase.
+.
+.TP
+.B /n
+Displays a long list format with file names on the far right of the screen.
+.
+.TP
+.B /x
+Displays the short names generated for non-8dot3 file names. The display
+is the same as the display for
+.B /n
+, but the short name is inserted before the long name.
+.
+.TP
+.B /c
+Displays the thousand separator in file sizes. This is the default
+behavior. Use
+.B /-c
+to hide separators.
+.
+.TP
+.B /4
+.
+Displays years in four-digit format.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w),
+.BR popd (1w),
+.BR pushd (1w)

@@ -1,0 +1,128 @@
+.\" Man page for "setlocal"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH SETLOCAL 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+setlocal \- Begins localization of environment changes in a batch file
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY setlocal
+.B /?
+.YS
+.
+.SY setlocal
+.RI [ extension_option ][ expansion_option ]
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+Begins localization of environment changes in a batch file.  Environment
+changes made after SETLOCAL has been issued are local to the batch file.
+ENDLOCAL must be issued to restore the previous settings.  When the end
+of a batch script is reached, an implied ENDLOCAL is executed for any
+outstanding SETLOCAL commands issued by that batch script.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /?
+Display help and exit. Other options are ignored.
+.
+.TP
+.I extension_option
+.
+enable or disable command processor extensions. These arguments takes
+precedence over the CMD /E:ON or /E:OFF switches. See CMD /? for details.
+.
+.TP
+.I expansion_option
+.
+enable or disable delayed environment variable expansion. These
+arguments takes precedence over the CMD /V:ON or /V:OFF switches.
+See CMD /? for details.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w),
+.BR endlocal (1w)

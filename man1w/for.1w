@@ -1,0 +1,140 @@
+.\" Man page for "for"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH FOR 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+for \- Runs a specified command for each file in a set of files
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY for
+.OP /?
+.
+.SY for
+.I %VARIABLE
+.B in
+.BI ( set )
+.B do
+.I command
+.RI [ parameters ]
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+To use the FOR command in a batch program, specify %%variable instead
+of %variable.  Variable names are case sensitive, so %i is different
+from %I.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /?
+Display help and exit. Other options are ignored.
+.
+.TP
+.I %VARIABLE
+Specifies a single letter replaceable parameter.
+.
+.TP
+.I set
+.
+Specifies a set of one or more files.  Wildcards may be used.
+.
+.TP
+.I command
+.
+Specifies the command to carry out for each file.
+.
+.TP
+.I parameters
+.
+Specifies parameters or switches for the specified command.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w),
+.BR for-directory (1w),
+.BR for-tree (1w),
+.BR for-sequence (1w),
+.BR for-extended (1w)

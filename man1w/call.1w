@@ -1,0 +1,148 @@
+.\" Man page for "call"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\" 
+.pc
+.TH CALL 1w "2019-04-08" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+call \- Calls one batch program from another
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY call
+.OP /?
+.RI [ drive_letter: ][ path ] file_name
+.RI [ batch_parameters ]
+.YS
+.
+.SY call
+.OP /?
+.RI [ :label
+.RI [ arguments ]]
+.YS
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+Calls one batch program from another without stopping the parent batch
+program. The
+.B call
+command accepts labels as the target of the call.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /?
+.
+Display help and exit. Other options are ignored.
+.
+.TP
+.RI [ drive_letter: ][ path ] file_name
+.
+Specifies the location and name of the batch program that you want to
+call. The
+.I FileName
+parameter is required, and it must have a
+.B .bat
+or
+.B .cmd
+extension.
+.
+.TP
+.I batch_parameters
+.
+Specifies any command-line information required by the batch program.
+.
+.TP
+.I :label
+.
+Specifies the label that you want a batch program control to jump to.
+.
+.TP
+.I arguments
+.
+Specifies the command-line information to be passed to the new instance
+of the batch program, beginning at
+.I :label
+. \.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w)
+

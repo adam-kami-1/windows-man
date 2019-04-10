@@ -1,0 +1,161 @@
+.\" Man page for "del" and "erase"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH DEL 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+del \- Deletes one or more files
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+[/p] [/f] [/s] [/q] [/a[:]<Attributes>] <Names>
+
+
+.SY del
+.OP /?
+.OP /p
+.OP /f
+.OP /s
+.OP /q
+.RB [ /a [ : ]
+.IR attributes ]
+.I names
+.YS
+.
+.SY erase
+.OP /?
+.OP /p
+.OP /f
+.OP /s
+.OP /q
+.RB [ /a [ : ]
+.IR attributes ]
+.I names
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /?
+.
+Display help and exit. Other options are ignored.
+.
+.TP
+.B /p
+.
+Prompts for confirmation before deleting the specified file.
+.
+.TP
+.B /f
+.
+Forces deletion of read-only files.
+.
+.TP
+.B /s
+.
+Deletes specified files from the current directory and all
+subdirectories. Displays the names of the files as they are being deleted.
+.
+.TP
+.B /q
+.
+Specifies quiet mode. You are not prompted for delete confirmation.
+.
+.TP
+.
+.BR /a [ : ]
+.I attributes
+.
+Deletes files based on the file attributes.
+.
+.
+.TP
+.
+.I names
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w),
+.BR popd (1w),
+.BR pushd (1w)

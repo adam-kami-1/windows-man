@@ -1,0 +1,144 @@
+.\" Man page for "time"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH TIME 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+time \- Displays or sets the system time
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY time
+.OP /?
+.YS
+.
+.SY time
+.OP /t
+.YS
+.
+.SY time
+.RI [ new_time ]
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+Type TIME with no parameters to display the current time setting and a prompt
+for a new one.  Press ENTER to keep the same time.
+
+If Command Extensions are enabled the TIME command supports
+the /T switch which tells the command to just output the
+current time, without prompting for a new time.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /?
+Display help and exit. Other options are ignored.
+.
+.TP
+.B /t
+Displays the current time without prompting you for a new time.
+.
+.TP
+.I new_time
+.
+Sets the system time to the new time specified in format
+.IR HH [ :MM [ :SS [ .NN ]]]
+.RB [ am | pm ]
+, where
+.I HH
+is in hours (required),
+.I MM
+is in minutes, and
+.I SS
+is in seconds.
+.I NN
+can be used to specify hundredths of a second. If
+.B am
+or
+.B pm
+is not specified, time uses the 24-hour format by default.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w),
+.BR date (1w)

@@ -1,0 +1,152 @@
+.\" Man page for "set"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH SET 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+set \- Displays, sets, or removes Windows environment variables
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY set
+.B /?
+.YS
+.
+.SY set
+.RI [ variable [ = [ string ]]]
+.YS
+.
+.SY set
+.B /p
+.IR variable = [ prompt_string ]
+.YS
+.
+.SY set
+.B /a
+.RI [ expression ]
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /?
+Display help and exit. Other options are ignored.
+.
+.TP
+.B /a
+.
+Sets String to a numerical expression that is evaluated.
+.
+.TP
+.B /a
+.
+Sets the value of Variable to a line of input entered by the user.
+.
+.TP
+.I variable
+.
+Specifies the environment variable to set or modify.
+.
+.TP
+.I string
+.
+Specifies the string to associate with the specified environment variable.
+.
+.TP
+.I prompt_string
+.
+Specifies a message to prompt the user for input. This parameter is used with the /p command-line option.
+.
+.
+.TP
+.I expression
+.
+Specifies a numerical expression. See Remarks for valid operators that can be used in Expression.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd(1w)

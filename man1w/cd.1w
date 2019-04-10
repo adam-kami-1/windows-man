@@ -1,0 +1,286 @@
+.\" Man page for "cd" and "chdir"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH CD 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+cd \- Displays the name of or changes the current directory
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY cd
+.OP /?
+.OP /d
+.RI [ drive_letter: ][ dir ]
+.YS
+.
+.SY chdir
+.OP /?
+.OP /d
+.RI [ drive_letter: ][ dir ]
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+Displays the name of or changes the current drive and/or directory.
+.
+.
+If used with only a drive letter (followe by colon, for example, cd C:),
+.B cd
+displays the names of the current directory in the specified drive. If
+used without parameters,
+.B cd
+displays the current drive and directory.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /?
+.
+Display help and exit. Other options are ignored.
+.
+.\" --------------------------------------------------------------------
+.TP
+.B /d
+.
+If
+.I drive_letter:
+is not empty then command
+.br
+.B cd
+.IR drive_letter: [ dir ]
+.br
+changes the current drive as well as the current directory for a drive.
+.br
+If
+.I drive_letter:
+is empty then option
+.B /d
+is ignored.
+.
+.\" --------------------------------------------------------------------
+.TP
+.I path
+.
+Specifies the drive and/or path to change or drive to display current
+path. 
+.
+.br
+If option
+.B /d
+was not used, then the
+.B cd
+displays current directory for that drive.
+The current drive remains unchanged.
+.
+.\" --------------------------------------------------------------------
+.TP
+.I drive_letter:
+.
+If
+.I drive_letter:
+is empty and
+.I dir
+is empty, then
+.B cd
+displays the current drive and directory.
+.
+If
+.I drive_letter:
+is empty then command
+.B cd
+concerns current drive.
+.
+If option
+.B /d
+was used, and
+.I drive_letter:
+is not empty then the command
+.B cd
+changes also the current drive. If
+.IR dir
+is empty, then the command
+.B cd
+.IB drive_letter:
+is equivalent of the command
+.IB drive_letter:
+.
+.\" --------------------------------------------------------------------
+.TP
+.I dir
+.
+Parameter
+.I dir
+can be absolute (beginning from
+.B \\
+) or relative directory.
+.
+.br
+.
+If
+.I drive_letter:
+is empty then command
+.B cd
+.I dir
+changes the current directory for a current drive. 
+.
+If
+.I drive_letter:
+is not empty then command
+.B cd
+.I drive_letter:dir
+changes the current directory for a drive specified by
+.I drive_letter:
+. If option
+.B /d
+was used, then the command
+.B cd
+.I /d drive_letter:dir
+changes also the current drive.
+.
+.br
+.
+Special cases of
+.I dir
+are \(dq.\(dq and \(dq..\(dq, the later changing current directory to
+parent directory. The \(dq.\(dq does not change current directory.
+.
+Spaces are not treated as delimiters, so Path can contain spaces
+without enclosing quotation marks.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.TP
+.B 0
+Current directory was changed.
+.
+.TP
+.B 1
+Directory does not exist or is not accessible.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.TP
+.B CD
+Variable %CD% is changed by every execution of
+.B cd
+command and always contains current drive and current directory.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+If command extensions are enabled, the following conditions apply to the cd command:
+.
+.IP \(bu
+The current directory string is converted to use the same case as the names on the disk.
+.
+.IP \(bu
+Spaces are not treated as delimiters, so
+.I dir
+can contain spaces without enclosing quotation marks.
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+If option
+.I dir
+consist of thre or more consecutive dosts then the command does not
+change curent directory but does not report any error.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+Display current drive and current directory on that drive.
+.IP
+cd
+.PP
+.
+Display current directory on drive E:
+.IP
+cd E:
+.PP
+.
+Change current drive to C:
+.IP
+cd /d C:
+.PP
+.
+Change current directory on current drive
+.IP
+cd /Windows/System32
+.PP
+.
+Change current directory on drive C:
+.IP
+cd C:/Windows/System32
+.PP
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w),
+.BR popd (1w),
+.BR pushd (1w)
+

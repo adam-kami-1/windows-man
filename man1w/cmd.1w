@@ -1,0 +1,377 @@
+.\" Man page for "cmd"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH CMD 1w "2019-04-10" "\(co Microsoft" "Windows commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+cmd.exe \- Starts a new instance of the Windows command interpreter
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY cmd
+.OP /c
+.OP /k
+.OP /s
+.OP /q
+.OP /d
+.OP /a
+.OP /u
+.OP /t:{<B><F>|<F>}
+.OP /e:{on|off}
+.OP /f:{on|off}
+.OP /v:{on|off}
+.RI [ String ]
+.YS
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+
+Starts a new instance of the command interpreter,
+.BR Cmd.exe .
+If used without parameters,
+.B cmd
+displays the version and copyright
+information of the operating system.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /c
+Carries out the command specified by
+.I String
+and then stops.
+.
+.TP
+.B /k
+Carries out the command specified by
+.I String
+and continues.
+.
+.TP
+.B /s
+Modifies the treatment of String after
+.BR /c " or " /k .
+.
+.TP
+.B /q
+Turns the echo off.
+.
+.TP
+.B /d
+Disables execution of AutoRun commands.
+.
+.TP
+.B /a
+Formats internal command output to a pipe or a file as American National Standards Institute (ANSI).
+.
+.TP
+.B /u
+Formats internal command output to a pipe or a file as Unicode.
+.
+.RE
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.TP
+.B CD
+Variable %CD% is changed by every execution of
+.B cd
+command and always contains current drive and current directory.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "BUILT-IN COMMANDS"
+.\" --------------------------------------------------------------------
+.
+.TP
+.B assoc              
+Displays or modifies file extension associations.
+.
+.TP
+.B break              
+Sets or clears extended CTRL+C checking.
+.
+.TP
+.B call               
+Calls one batch program from another.
+.
+.TP
+.B cd                 
+Displays the name of or changes the current directory.
+.
+.TP
+.B chdir              
+Displays the name of or changes the current directory.
+.
+.TP
+.B cls                
+Clears the screen.
+.
+.TP
+.B color              
+Sets the default console foreground and background colors.
+.
+.TP
+.B copy               
+Copies one or more files to another location.
+.
+.TP
+.B date               
+Displays or sets the date.
+.
+.TP
+.B del                
+Deletes one or more files.
+.
+.TP
+.B dir                
+Displays a list of files and subdirectories in a directory.
+.
+.TP
+.B echo               
+Displays messages, or turns command echoing on or off.
+.
+.TP
+.B endlocal           
+Ends localization of environment changes in a batch file.
+.
+.TP
+.B erase              
+Deletes one or more files.
+.
+.TP
+.B exit               
+Quits the CMD.EXE program (command interpreter).
+.
+.TP
+.B for                
+Runs a specified command for each file in a set of files.
+.
+.TP
+.B ftype              
+Displays or modifies file types used in file extension associations.
+.
+.TP
+.B goto               
+Directs the Windows command interpreter to a labeled line in a batch program.
+.
+.TP
+.B if                 
+Performs conditional processing in batch programs.
+.
+.TP
+.B md                 
+Creates a directory.
+.
+.TP
+.B mkdir              
+Creates a directory.
+.
+.TP
+.B mklink             
+Creates Symbolic Links and Hard Links
+.
+.TP
+.B move               
+Moves one or more files from one directory to another directory.
+.
+.TP
+.B path               
+Displays or sets a search path for executable files.
+.
+.TP
+.B pause              
+Suspends processing of a batch file and displays a message.
+.
+.TP
+.B popd               
+Restores the previous value of the current directory saved by PUSHD.
+.
+.TP
+.B prompt             
+Changes the Windows command prompt.
+.
+.TP
+.B pushd              
+Saves the current directory then changes it.
+.
+.TP
+.B rd                 
+Removes a directory.
+.
+.TP
+.B rem                
+Records comments (remarks) in batch files or CONFIG.SYS.
+.
+.TP
+.B ren                
+Renames a file or files.
+.
+.TP
+.B rename             
+Renames a file or files.
+.
+.TP
+.B rmdir              
+Removes a directory.
+.
+.TP
+.B set                
+Displays, sets, or removes Windows environment variables.
+.
+.TP
+.B setlocal           
+Begins localization of environment changes in a batch file.
+.
+.TP
+.B shift              
+Shifts the position of replaceable parameters in batch files.
+.
+.TP
+.B start              
+Starts a separate window to run a specified program or command.
+.
+.TP
+.B time               
+Displays or sets the system time.
+.
+.TP
+.B title              
+Sets the window title for a CMD.EXE session.
+.
+.TP
+.B type               
+Displays the contents of a text file.
+.
+.TP
+.B ver                
+Displays the Windows version.
+.
+.TP
+.B verify             
+Tells Windows whether to verify that your files are written correctly to a disk.
+.
+.TP
+.B vol                
+Displays a disk volume label and serial number.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR assoc (1w),
+.BR break (1w),
+.BR call (1w),
+.BR cd (1w),
+.BR chdir (1w),
+.BR cls (1w),
+.BR color (1w),
+.BR copy (1w),
+.BR date (1w),
+.BR del (1w),
+.BR dir (1w),
+.BR echo (1w),
+.BR endlocal (1w),
+.BR erase (1w),
+.BR exit (1w),
+.BR for (1w),
+.BR ftype (1w),
+.BR goto (1w),
+.BR if (1w),
+.BR md (1w),
+.BR mkdir (1w),
+.BR mklink (1w),
+.BR move (1w),
+.BR path (1w),
+.BR pause (1w),
+.BR popd (1w),
+.BR prompt (1w),
+.BR pushd (1w),
+.BR rd (1w),
+.BR rem (1w),
+.BR ren (1w),
+.BR rename (1w),
+.BR rmdir (1w),
+.BR set (1w),
+.BR setlocal (1w),
+.BR shift (1w),
+.BR start (1w),
+.BR time (1w),
+.BR title (1w),
+.BR type (1w),
+.BR ver (1w),
+.BR verify (1w),
+.BR vol (1w)

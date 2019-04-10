@@ -1,0 +1,204 @@
+.\" Man page for "start"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH START 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+start \- Starts a separate window to run a specified program or command
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY start
+.OP /?
+.YS
+.
+.SY start
+.RI [ \(dqtitle\(dq ]
+.RB [ /d
+.IR path ]
+.OP /b
+.OP /i
+.RI [ win_size ]
+.RI [ memory_space ]
+.RI [ priority_class ]
+.RB [ /node
+.IR numa_node ]
+.RB [ /affinity
+.IR affinity_max ]
+.OP /wait
+.RI [ command ]
+.RI [ parameters ]
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.
+.B /?
+Display help and exit. Other options are ignored.
+.
+.
+.TP
+.I \(dqtitle\(dq
+.
+Specifies the title to display in the Command Prompt window title bar.
+.
+.
+.TP
+.BI /d path
+.
+Specifies the startup directory.
+.
+.
+.TP
+.
+.B /i
+.
+Passes the Cmd.exe startup environment to the new Command Prompt window.
+If /i is not specified, the current environment is used.
+.
+.
+.TP
+.
+.B /b
+.
+Starts an application without opening a new Command Prompt window. CTRL+C handling is ignored unless the application enables CTRL+C processing. Use CTRL+BREAK to interrupt the application.
+.
+.
+.TP
+.
+.I win_size
+.
+Specifies to minimize (/min) or maximize (/max) the new Command Prompt window.
+.OP /min
+.OP /max
+.
+.
+.TP
+.I memory_space
+.
+Starts 16-bit programs in a separate memory space (/separate) or shared memory space (/shared). These options are not supported on 64-bit platforms.
+.RB [ /separate | /shared ]
+.
+.
+.TP
+.I priority_class
+.
+Starts an application in the specified priority class. Valid priority class values are /low, /normal, /high, /realtime, /abovenormal, and /belownormal.
+.RB [ /low | /normal | /high | /realtime | /abovenormal | /belownormal ]
+.
+.
+.TP
+.BI /node numa_node
+Specifies the preferred Non-Uniform Memory Architecture (NUMA) node as a decimal integer.
+.
+.
+.TP
+.BI /affinity affinity_mask
+.
+Applies the specified processor affinity mask (expressed as a hexadecimal number) to the new application.
+.
+.
+.TP
+.B /wait
+.
+Starts an application and waits for it to end.
+.
+.
+.TP
+.I command
+.
+Specifies the command or program to start.
+.
+.TP
+.I parameters
+.
+Specifies parameters to pass to the command or program.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w)

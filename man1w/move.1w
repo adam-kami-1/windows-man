@@ -1,0 +1,163 @@
+.\" Man page for "move"
+.\"
+.\" Copyright (C), 2019, Adam Kaminski
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\"
+.pc
+.TH MOVE 1w "2019-04-09" "\(co Microsoft" "Windows built-in commands"
+.
+.
+.
+.SH NAME
+.\" --------------------------------------------------------------------
+move \- Moves one or more files from one directory to another directory
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
+.SY move
+.OP /?
+.YS
+.
+.SY move
+.RB [ /y | /-y ]
+.RI [ drive: ][ path ] filename
+.RI [ ... ]
+.I  destination
+.YS
+.
+.SY move
+.RB [ /y | /-y ]
+.RI [ drive: ][ path ] dirname1
+.I  dirname2
+.YS
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+.\" --------------------------------------------------------------------
+.
+.TP
+.B /?
+Display help and exit. Other options are ignored.
+.
+.TP
+.RI [ drive: ][ path ] filename
+.
+Specifies the location and name of the file or files you want to move.
+.
+.TP
+.I destination
+.
+Specifies the new location of the file. Destination can consist of a
+drive letter and colon, a directory name, or a combination. If you are
+moving only one file, you can also include a filename if you want to
+rename the file when you move it.
+.
+.TP
+.RI [ drive: ][ path ] dirname1
+.
+Specifies the directory you want to rename.
+.
+.TP
+.I dirname2
+.
+Specifies the new name of the directory.
+.
+.TP
+.B /y
+.
+Suppresses prompting to confirm you want to overwrite an existing
+destination file.
+.
+.TP
+.B /-y
+.
+Causes prompting to confirm you want to overwrite an existing
+destination file.
+.
+.\" --------------------------------------------------------------------
+.SH "EXIT STATUS"
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH REGISTRY
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH FILES
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH NOTES
+.\" --------------------------------------------------------------------
+.
+The switch
+.B /y
+may be present in the COPYCMD environment variable.
+This may be overridden with
+.B /-y
+on the command line.  Default is to prompt on overwrites unless
+.B move
+command is being executed from within a batch script.
+.
+.\" --------------------------------------------------------------------
+.SH BUGS
+.\" --------------------------------------------------------------------
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH EXAMPLE
+.\" --------------------------------------------------------------------
+.
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.
+Based on
+.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
+Command-Line Reference
+.UE
+.br
+All copyrights belongs to \(co
+.UR http://www.microsoft.com/
+Microsoft
+.UE
+.
+.
+.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.BR cmd (1w),
+.BR popd (1w),
+.BR pushd (1w)
