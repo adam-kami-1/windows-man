@@ -31,6 +31,10 @@ color \- Sets the default console foreground and background colors
 .
 .SY cd
 .OP /?
+.YS
+.
+.
+.SY cd
 .RI [[ background ] foreground ]
 .YS
 .
@@ -41,11 +45,98 @@ color \- Sets the default console foreground and background colors
 .\" --------------------------------------------------------------------
 .
 Changes the foreground and background colors in the Command Prompt
-window for the current session. If used without parameters,
+window for the current session.
+Color set by the command
+.B color
+is valid until end of session or first prompt changing the colors.
+.P
+If used without parameters,
 .B color
 restores the default Command Prompt window foreground and background
 colors.
 .
+.P
+If you specify only one hexadecimal digit, the corresponding color is
+used as the foreground color and the background color is set to the
+default color.
+.
+.P
+Do not use space characters between
+.I background
+and
+.I foreground
+parameters.
+.
+.P
+Valid values for
+.I background
+and
+.I foreground
+are:
+.
+.TP
+.B 0
+Black
+.
+.TP
+.B 1
+Blue
+.
+.TP
+.B 2
+Green
+.
+.TP
+.B 3
+Aqua
+.
+.TP
+.B 4
+Red
+.
+.TP
+.B 5
+Purple
+.
+.TP
+.B 6
+Yellow
+.
+.TP
+.B 7
+White
+.
+.TP
+.B 8
+Gray
+.
+.TP
+.B 9
+Light Blue
+.
+.TP
+.B A
+Light Green
+.
+.TP
+.B B
+Light Aqua
+.
+.TP
+.B C
+Light Red
+.
+.TP
+.B D
+Light Purple
+.
+.TP
+.B E
+Light Yellow
+.
+.TP
+.B F
+Bright White
 .
 .
 .\" --------------------------------------------------------------------
@@ -55,12 +146,14 @@ colors.
 .TP
 .B /?
 .
-Display help and exit. Other options are ignored.
+Display help and exit. Other options are silently ignored.
+.
 .
 .TP
 .I background
 .
 Specifies the background color.
+.
 .
 .TP
 .I foreground
@@ -72,6 +165,18 @@ Specifies the foreground color.
 .SH "EXIT STATUS"
 .\" --------------------------------------------------------------------
 .
+.TP
+.B 0
+.
+Comand
+.B color
+executed succesfully.
+.
+.
+.TP
+.B 1
+.
+Both colors foreground and background are the same color.
 .
 .
 .\" --------------------------------------------------------------------
@@ -90,6 +195,15 @@ set environment variable %ERRORLEVEL% to command exit status.
 .SH REGISTRY
 .\" --------------------------------------------------------------------
 .
+The registry entry
+.I HKEY_LOCAL_MACHINE\(rsSoftware\(rsMicrosoft\(rsCommand Processor\(rsDefaultColor
+may contain default value for background and foreground color as two
+digit hexadecimal value.
+.
+.P
+If the value of above is 0 then it is used default Command Prompt
+configuration value from
+.IR HKEY_CURRENT_USER\(rsConsole\(rsScreenColors .
 .
 .
 .\" --------------------------------------------------------------------
@@ -120,5 +234,4 @@ set environment variable %ERRORLEVEL% to command exit status.
 .\" --------------------------------------------------------------------
 .
 .BR cmd (1w),
-.BR popd (1w),
-.BR pushd (1w)
+.BR prompt (1w)
