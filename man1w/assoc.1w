@@ -78,6 +78,13 @@ returns 0 or 1, but returned value not always shows what it should.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B assoc
+set environment variable %ERRORLEVEL% to command exit status.
+.
 .
 .\" --------------------------------------------------------------------
 .SH REGISTRY

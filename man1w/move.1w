@@ -108,6 +108,12 @@ destination file.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B move
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

@@ -91,6 +91,12 @@ Specifies parameters or switches for the specified command.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B for
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

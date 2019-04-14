@@ -71,6 +71,12 @@ from 0 to 8. Requires command extensions, which are enabled by default.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B shift
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

@@ -115,6 +115,13 @@ Deletes files based on the file attributes.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Commands
+.BR del and erase
+set environment variable %ERRORLEVEL% to command exit status.
+.
 .
 .\" --------------------------------------------------------------------
 .SH REGISTRY

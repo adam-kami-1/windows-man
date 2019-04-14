@@ -159,6 +159,12 @@ Specifies parameters to pass to the command or program.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B start
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

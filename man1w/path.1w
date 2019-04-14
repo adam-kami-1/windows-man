@@ -88,6 +88,18 @@ Appends the command path to the existing set of directories listed in the PATH e
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B PATH
+.
+ttttttt
+.
+.
+.TP
+.B ERRORLEVEL
+.
+Command
+.B path
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

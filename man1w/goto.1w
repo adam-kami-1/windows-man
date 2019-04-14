@@ -78,6 +78,12 @@ Specifies a text string that is used as a label in the batch program.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B goto
+set environment variable %ERRORLEVEL% to command exit status. REALLY ????
 .
 .
 .\" --------------------------------------------------------------------

@@ -188,6 +188,13 @@ Displays years in four-digit format.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B dir
+set environment variable %ERRORLEVEL% to command exit status.
+.
 .
 .\" --------------------------------------------------------------------
 .SH REGISTRY

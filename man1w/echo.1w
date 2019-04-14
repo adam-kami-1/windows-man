@@ -84,6 +84,12 @@ Specifies the text to display on the screen.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B echo
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------
@@ -122,3 +128,11 @@ Specifies the text to display on the screen.
 .BR cmd (1w),
 .BR popd (1w),
 .BR pushd (1w)
+
+
+.\"  ECHO OFF and ECHO ON
+.\"  --------------------
+
+.\" Entering ECHO OFF from the command line erases the prompt and leaves just a cursor on the screen.  ECHO ON from the command line restores the prompt.  This works with all version of DOS.
+
+.\" One of the most frequently asked questions is "How do I ECHO a blank line in a batch file?"  The most common answer is to use ECHO directly followed by a period:  ECHO. like so.  However, just about any "white space" character will work, as well as any "delimiter".  The following alternatives can be used:  ECHO.  ECHO"  ECHO,  ECHO:  ECHO;  ECHO[  ECHO]  etc.  Apparently it's just the way that the command handles the delimiter and has been available from way back!  Microsoft just began mentioning it in the documentation recently, though, and their examples use a period.

@@ -70,6 +70,12 @@ Specifies a string of characters to include as a comment.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B rem
+set environment variable %ERRORLEVEL% to command exit status. REALLY ????
 .
 .
 .\" --------------------------------------------------------------------

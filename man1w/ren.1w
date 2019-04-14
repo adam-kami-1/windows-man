@@ -90,6 +90,12 @@ Specifies the new name for the file. You can use wildcard characters to specify 
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Commands
+.BR ren and rename
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

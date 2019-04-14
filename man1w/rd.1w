@@ -91,6 +91,12 @@ Quiet mode, do not ask if ok to remove a directory tree with /S.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Commands
+.BR rd and rmdir
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

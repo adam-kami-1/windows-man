@@ -76,9 +76,18 @@ Specifies the drive and/or path to change or drive to display current path.
 .
 .TP
 .B CD
+.
 Variable %CD% is changed by every execution of
 .B pushd
 command and always contains current drive and current directory.
+.
+.
+.TP
+.B ERRORLEVEL
+.
+Command
+.B pushd
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

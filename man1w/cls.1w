@@ -61,6 +61,7 @@ Other options and parameters are silently ignored.
 .
 .TP
 .B 1
+.
 The wrong option was used.
 Instead of clearing the screen there is displayed the message:
 .
@@ -73,11 +74,15 @@ The syntax of the command is incorrect.
 .
 .TP
 nothing
-Any other case.
+.
+In any other case, exit status and variable %ERRORLEVEL% are not changed.
 .
 .\" --------------------------------------------------------------------
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
+.
+.TP
+.B ERRORLEVEL
 .
 Command
 .B cls
@@ -103,7 +108,9 @@ set environment variable %ERRORLEVEL% to command exit status.
 .P
 If
 .B cls
-is redirected to file, console con: or executed through
+is redirected to file, console
+.I con:
+or executed through
 .B for /f
 it will print a form feed character
 .BR ^L .

@@ -102,6 +102,12 @@ of the batch program, beginning at
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B call
+set environment variable %ERRORLEVEL% to command exit status. Really ????
 .
 .
 .\" --------------------------------------------------------------------

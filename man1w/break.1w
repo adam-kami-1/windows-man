@@ -39,11 +39,13 @@ break \- Sets or clears extended CTRL+C checking.
 .
 Sets or Clears Extended CTRL+C checking on DOS system.
 .
-This is present for Compatibility with DOS systems. It has no effect under Windows.
+This is present for Compatibility with DOS systems. It has no effect
+under Windows.
 .
 If Command Extensions are enabled, and running on the Windows
-platform, then the BREAK command will enter a hard coded breakpoint
-if being debugged by a debugger.
+platform, then the
+.B break
+command will enter a hard coded breakpoint if being debugged by a debugger.
 .
 .
 .
@@ -64,22 +66,43 @@ Display help and exit. Other options are ignored.
 .TP
 .B on
 .
+Turns on the break, which allows the Ctrl+C function.
+.
 .TP
 .B off
 .
+Turns off the break, not allowing Ctrl+C to cancel a process.
+.
 .RE
+.
+.TP
+any other parameter
+.
+All other values of parameter are silently ignored.
 .
 .
 .\" --------------------------------------------------------------------
 .SH "EXIT STATUS"
 .\" --------------------------------------------------------------------
 .
+.TP
+.B 0
+.
+Command
+.B break
+always returns exit code 0.
 .
 .
 .\" --------------------------------------------------------------------
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B break
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

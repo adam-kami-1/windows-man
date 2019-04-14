@@ -197,10 +197,17 @@ Directory does not exist or is not accessible.
 .
 .TP
 .B CD
+.
 Variable %CD% is changed by every execution of
 .B cd
 command and always contains current drive and current directory.
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B cd
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .\" --------------------------------------------------------------------
 .SH REGISTRY

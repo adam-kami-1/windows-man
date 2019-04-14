@@ -90,6 +90,10 @@ that number.  If quitting CMD.EXE, sets the process exit code with that number.
 .TP
 .B ERRORLEVEL
 .
+Command
+.B cmd
+set environment variable %ERRORLEVEL% to command exit status.
+.
 .
 .\" --------------------------------------------------------------------
 .SH REGISTRY

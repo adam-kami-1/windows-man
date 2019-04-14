@@ -109,10 +109,11 @@ Formats internal command output to a pipe or a file as Unicode.
 .\" --------------------------------------------------------------------
 .
 .TP
-.B CD
-Variable %CD% is changed by every execution of
-.B cd
-command and always contains current drive and current directory.
+.B ERRORLEVEL
+.
+Command
+.B cmd
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

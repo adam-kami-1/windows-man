@@ -82,6 +82,12 @@ Specifies the name and location of the new directory. The maximum length of any 
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Commands
+.BR md and mkdir
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------

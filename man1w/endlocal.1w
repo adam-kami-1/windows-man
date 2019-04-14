@@ -67,6 +67,13 @@ Display help and exit. Other options are ignored.
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+.TP
+.B ERRORLEVEL
+.
+Command
+.B endlocal
+set environment variable %ERRORLEVEL% to command exit status.
+.
 .
 .\" --------------------------------------------------------------------
 .SH REGISTRY
