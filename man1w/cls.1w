@@ -6,15 +6,22 @@
 .\" License as specified in the file COPYING that comes with the 
 .\" man-db distribution.
 .\"
+.\" Based on:
+.\" Microsoft Windows documentation:
+.\" https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
+.\" Database and OS scripting web page:
+.\" https://ss64.com/nt/
 .\"
-.pc
+.\" Copyrights to all tools delivered by (R) Microsoft belongs to
+.\" (C) Microsoft
+.\"
 .TH CLS 1w "2019-04-08" "\(co Microsoft" "Windows built-in commands"
 .
 .
 .
 .SH NAME
 .\" --------------------------------------------------------------------
-cls \- Clears the screen
+cls \- clears the screen
 .
 .
 .
@@ -22,7 +29,7 @@ cls \- Clears the screen
 .SH SYNOPSIS
 .\" --------------------------------------------------------------------
 .
-.SY cd
+.SY cls
 .OP /?
 .
 .
@@ -31,7 +38,9 @@ cls \- Clears the screen
 .SH DESCRIPTION
 .\" --------------------------------------------------------------------
 .
-Clears the Command Prompt window.
+Command
+.B cls
+clears the Command Prompt window.
 .
 .
 .
@@ -41,19 +50,38 @@ Clears the Command Prompt window.
 .
 .TP
 .B /?
-Display help and exit. Other options are ignored.
+.
+Display help and exit.
+Other options and parameters are silently ignored.
 .
 .
 .\" --------------------------------------------------------------------
 .SH "EXIT STATUS"
 .\" --------------------------------------------------------------------
 .
+.TP
+.B 1
+The wrong option was used.
+Instead of clearing the screen there is displayed the message:
 .
+.RS
+.IP
+.EX
+The syntax of the command is incorrect.
+.EE
+.RE
+.
+.TP
+nothing
+Any other case.
 .
 .\" --------------------------------------------------------------------
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
 .
+Command
+.B cls
+set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------
@@ -72,30 +100,33 @@ Display help and exit. Other options are ignored.
 .SH NOTES
 .\" --------------------------------------------------------------------
 .
+.P
+If
+.B cls
+is redirected to file, console con: or executed through
+.B for /f
+it will print a form feed character
+.BR ^L .
 .
 .\" --------------------------------------------------------------------
 .SH BUGS
 .\" --------------------------------------------------------------------
 .
+Command
+.B cls
+does not change the value of %ERRORLEVEL% variable when help option
+.B /?
+is used or any other parameters not being option (starting with
+.B /
+character).
+The same is for command
+.B cls
+used without any options.
 .
 .
 .\" --------------------------------------------------------------------
 .SH EXAMPLE
 .\" --------------------------------------------------------------------
-.
-.\" --------------------------------------------------------------------
-.SH "AUTHORS"
-.\" --------------------------------------------------------------------
-.
-Based on
-.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
-Command-Line Reference
-.UE
-.br
-All copyrights belongs to \(co
-.UR http://www.microsoft.com/
-Microsoft
-.UE
 .
 .
 .

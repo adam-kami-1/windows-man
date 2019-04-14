@@ -6,8 +6,15 @@
 .\" License as specified in the file COPYING that comes with the 
 .\" man-db distribution.
 .\"
+.\" Based on:
+.\" Microsoft Windows documentation:
+.\" https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
+.\" Database and OS scripting web page:
+.\" https://ss64.com/nt/
 .\"
-.pc
+.\" Copyrights to all tools delivered by (R) Microsoft belongs to
+.\" (C) Microsoft
+.\"
 .TH REM 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
 .
 .
@@ -91,20 +98,6 @@ Specifies a string of characters to include as a comment.
 .\" --------------------------------------------------------------------
 .SH EXAMPLE
 .\" --------------------------------------------------------------------
-.
-.\" --------------------------------------------------------------------
-.SH "AUTHORS"
-.\" --------------------------------------------------------------------
-.
-Based on
-.UR https://technet.microsoft.com/en-us/library/cc754340(v=ws.10).aspx
-Command-Line Reference
-.UE
-.br
-All copyrights belongs to \(co
-.UR http://www.microsoft.com/
-Microsoft
-.UE
 .
 .
 .
