@@ -30,11 +30,11 @@ date \- Displays or sets the date
 .\" --------------------------------------------------------------------
 .
 .SY date
-.OP /?
+.B /?
 .YS
 .
 .SY date
-.OP /t
+.B /t
 .YS
 .
 .SY date
@@ -47,9 +47,19 @@ date \- Displays or sets the date
 .SH DESCRIPTION
 .\" --------------------------------------------------------------------
 .
-Displays or sets the system date. If used without parameters,
+Displays or sets the system date.
+To change the current date, you must have administrative credentials.
+If used without parameters,
 .B date
 displays the current system date setting and prompts you to enter a new date.
+Press ENTER to keep the same date.
+.P
+If Command Extensions are enabled the
+.B date
+command supports the
+.B /t
+switch which tells the command to just output the current date, without
+prompting for a new date.
 .
 .
 .
@@ -59,18 +69,87 @@ displays the current system date setting and prompts you to enter a new date.
 .
 .TP
 .B /?
-Display help and exit. Other options are ignored.
+.
+Display help and exit. Other options are silently ignored.
 .
 .TP
 .B /t
+.
 Displays the current date without prompting you for a new date.
+Option available only if Command Extensions are enabled.
 .
 .TP
-.I date
+.RI [ date ]
+.
+Sets the date specified. If used without parameters,
+.B date
+displays the current system date setting and prompts you to enter
+a new date.
+Format of date depends on Windows international settings, and could be
+one of:
+.
+.RS
+.
+.IP \(bu
+.IB month - day - year
+.IP \(bu
+.IB day - month - year
+.IP \(bu
+.IB year - month - day
+.
+.PP
+You must separate values for
+.IR month ,
+.IR day ,
+and
+.I year
+with periods
+.RB ( . ),
+hyphens
+.RB ( - ),
+or slash marks
+.RB ( / ).
+.
+.\".P
+.TP
+.I month
+Is the month (one or two digits), Valid
+.I month
+values are 1 through 12.
+.
+.
+.TP
+.I day
+Is the day (one or two digits). Valid
+.I day
+values are 1 through 31.
+.
+.
+.TP
+.I year
+Is the year (two or four digits). Valid
+.I year
+values are either 00 through 99, or 1980 through 2099. If you use two
+digits, the values 80 through 99 correspond to the years 1980 through
+1999.
+.
+.
+.RE
 .
 .\" --------------------------------------------------------------------
 .SH "EXIT STATUS"
 .\" --------------------------------------------------------------------
+.
+.TP
+0
+.
+Date was successfully changed (or not given).
+.
+.
+.TP
+1
+.
+The user lacks admin privileges.
 .
 .
 .
@@ -84,6 +163,12 @@ Displays the current date without prompting you for a new date.
 Command
 .B date
 set environment variable %ERRORLEVEL% to command exit status.
+.
+.
+.TP
+.B DATE
+.
+The environment variable %DATE% contains current system date.
 .
 .
 .\" --------------------------------------------------------------------
