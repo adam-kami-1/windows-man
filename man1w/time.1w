@@ -30,15 +30,15 @@ time \- Displays or sets the system time
 .\" --------------------------------------------------------------------
 .
 .SY time
-.OP /?
+.B  /?
 .YS
 .
 .SY time
-.OP /t
+.B  /t
 .YS
 .
 .SY time
-.RI [ new_time ]
+.RI [ time ]
 .YS
 .
 .
@@ -47,12 +47,19 @@ time \- Displays or sets the system time
 .SH DESCRIPTION
 .\" --------------------------------------------------------------------
 .
-Type TIME with no parameters to display the current time setting and a prompt
-for a new one.  Press ENTER to keep the same time.
-
-If Command Extensions are enabled the TIME command supports
-the /T switch which tells the command to just output the
-current time, without prompting for a new time.
+Displays or sets the system time.
+If used without parameters,
+.B time
+displays the system time and prompts you to enter a new time.
+Press ENTER to keep the same time.
+.
+.P
+If Command Extensions are enabled the
+.B time
+command supports the
+.B /t
+switch which tells the command to just output the current time, without
+prompting for a new time.
 .
 .
 .\" --------------------------------------------------------------------
@@ -61,36 +68,94 @@ current time, without prompting for a new time.
 .
 .TP
 .B /?
-Display help and exit. Other options are ignored.
+Display help and exit. Other options are silently ignored.
+.
 .
 .TP
 .B /t
 Displays the current time without prompting you for a new time.
+Option available only if Command Extensions are enabled.
+Other options are silently ignored.
 .
 .TP
-.I new_time
+.I time
 .
-Sets the system time to the new time specified in format
-.IR HH [ :MM [ :SS [ .NN ]]]
-.RB [ am | pm ]
-, where
+Sets the system time to the
+.I time
+specified in format
+.IR HH [ \fB:\fIMM [ \fB:\fISS [ \fB.\fINN ]]]
+.RI [ season ]
+.
+.
+.RS
+.
+.TP
 .I HH
-is in hours (required),
+Is in hours (required). Valid
+.I HH
+values are 0 through 24.
+.
+.
+.TP
 .I MM
-is in minutes, and
+Is in minutes. Valid
+.I MM
+values are 0 through 59.
+.
+.
+.TP
 .I SS
-is in seconds.
+Is in seconds. Valid
+.I SS
+values are 0 through 59.
+.
+.
+.TP
 .I NN
-can be used to specify hundredths of a second. If
-.B am
-or
-.B pm
-is not specified, time uses the 24-hour format by default.
+Can be used to specify hundredths of a second.
+.
+.
+.TP
+.I season
+Used for 12-hour format of time in the form:
+.BR a [ m ]| p [ m ].
+If not specified,
+.B time
+uses the 24-hour format.
+.
+.RS
+
+.TP
+.BR a [ m ]
+.
+Before noon, used with times of day between midnight and noon.
+.
+.
+.TP
+.BR p [ m ]
+.
+After noon, used after times of day between noon and midnight.
+.
+.RE
+.
+.RE
 .
 .
 .\" --------------------------------------------------------------------
 .SH "EXIT STATUS"
 .\" --------------------------------------------------------------------
+.
+.TP
+0
+.
+Time was successfully changed (or not given).
+.
+.
+.TP
+1
+.
+The user lacks admin privileges.
+.
 .
 .
 .
@@ -104,6 +169,12 @@ is not specified, time uses the 24-hour format by default.
 Command
 .B time
 set environment variable %ERRORLEVEL% to command exit status.
+.
+.
+.TP
+.B TIME
+.
+The environment variable %TIME% contains current system time.
 .
 .
 .\" --------------------------------------------------------------------

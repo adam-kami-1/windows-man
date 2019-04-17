@@ -77,6 +77,7 @@ Display help and exit. Other options are silently ignored.
 .
 Displays the current date without prompting you for a new date.
 Option available only if Command Extensions are enabled.
+Other options are silently ignored.
 .
 .TP
 .RI [ date ]
