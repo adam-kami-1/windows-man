@@ -15,7 +15,7 @@
 .\" Copyrights to all tools delivered by (R) Microsoft belongs to
 .\" (C) Microsoft
 .\"
-.TH ECHO 1w "2019-04-10" "\(co Microsoft" "Windows built-in commands"
+.TH ECHO 1w "2019-04-18" "\(co Microsoft" "Windows built-in commands"
 .
 .
 .
@@ -30,20 +30,17 @@ echo \- Displays messages, or turns command echoing on or off
 .\" --------------------------------------------------------------------
 .
 .SY echo
-.OP /?
-.YS
-.
-.SY echo
-.YS
-.
-.SY echo
-.I state
+.B /?
 .YS
 .
 .SY echo
 .I message
 .YS
 .
+.
+.SY echo
+.RI [ state ]
+.YS
 .
 .
 .\" --------------------------------------------------------------------
@@ -62,34 +59,47 @@ displays the current echo setting.
 .
 .TP
 .B /?
-Display help and exit. Other options are ignored.
-.
-.TP
-.I state
-.
-Turns on or off the command echoing feature. Command echoing is on by default.
+Display help and exit. Other options are silently ignored.
 .
 .TP
 .I message
 .
 Specifies the text to display on the screen.
 .
+.TP
+.I state
+.
+Turns on or off the command echoing feature. Command echoing is on by default.
+.
+.RS
+.
+.TP
+.B on
+.
+Turns on the command echoing feature.
+.
+.
+.TP
+.B off
+.
+Turns off the command echoing feature.
+.
+.
+.RE
+.
+.
 .\" --------------------------------------------------------------------
 .SH "EXIT STATUS"
 .\" --------------------------------------------------------------------
 .
+Command
+.B echo
+does not change exit status.
 .
 .
 .\" --------------------------------------------------------------------
 .SH ENVIRONMENT
 .\" --------------------------------------------------------------------
-.
-.TP
-.B ERRORLEVEL
-.
-Command
-.B echo
-set environment variable %ERRORLEVEL% to command exit status.
 .
 .
 .\" --------------------------------------------------------------------
@@ -108,6 +118,13 @@ set environment variable %ERRORLEVEL% to command exit status.
 .SH NOTES
 .\" --------------------------------------------------------------------
 .
+Entering
+.B echo off
+from the command line erases the prompt and leaves just a cursor on the
+screen. The prompt remains turned off until entering the command
+.B echo on
+which restores the prompt.
+.
 .
 .\" --------------------------------------------------------------------
 .SH BUGS
@@ -125,14 +142,10 @@ set environment variable %ERRORLEVEL% to command exit status.
 .SH "SEE ALSO"
 .\" --------------------------------------------------------------------
 .
-.BR cmd (1w),
-.BR popd (1w),
-.BR pushd (1w)
+.BR cmd (1w)
 
 
 .\"  ECHO OFF and ECHO ON
 .\"  --------------------
-
-.\" Entering ECHO OFF from the command line erases the prompt and leaves just a cursor on the screen.  ECHO ON from the command line restores the prompt.  This works with all version of DOS.
 
 .\" One of the most frequently asked questions is "How do I ECHO a blank line in a batch file?"  The most common answer is to use ECHO directly followed by a period:  ECHO. like so.  However, just about any "white space" character will work, as well as any "delimiter".  The following alternatives can be used:  ECHO.  ECHO"  ECHO,  ECHO:  ECHO;  ECHO[  ECHO]  etc.  Apparently it's just the way that the command handles the delimiter and has been available from way back!  Microsoft just began mentioning it in the documentation recently, though, and their examples use a period.
